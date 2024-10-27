@@ -16,7 +16,8 @@ vector<pair<string,string>> graphMake(const vector<vector<string>>& input)
           int numSteps = input[0].size();
           int numTransactions = input.size();
 
-          for (int j = 1; j < numSteps; ++j) {
+          for (int j = 1; j < numSteps; ++j) 
+          {
                     for (int i = 0; i < numTransactions; ++i) 
                     {
                               if (input[i][j] != "-" && input[i][j] != "COM") 
@@ -48,7 +49,7 @@ bool cycleCheck(const vector<pair<string, string>>& graph)
 {
           unordered_map<string, vector<string>> adjList;
 
-    // Construct adjacency list
+
           for (const auto& edge : graph) 
           {
                     adjList[edge.first].push_back(edge.second);
@@ -56,7 +57,7 @@ bool cycleCheck(const vector<pair<string, string>>& graph)
 
           unordered_set<string> visited, recStack;
 
-    // Helper function for DFS and cycle detection
+   
           function<bool(const string&)> dfs = [&](const string& node) 
           {
                     if (recStack.count(node)) 
