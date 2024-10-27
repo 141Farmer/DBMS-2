@@ -8,16 +8,23 @@ using namespace std;
 
 vector<pair<string,string>>graphMake(const vector<vector<string>>& input) 
 {
-          vector<pair<string, string>> graph;
-          vector<string> transactions, operations, values;
-          int numSteps = input[0].size();
-          int numTransactions = input.size();
-
-          for (int j = 1; j < numSteps; ++j) 
-          {
-                    for (int i = 0; i < numTransactions; ++i) 
-                    {
-                              if (input[i][j] != "-" && input[i][j] != "COM") 
+      vector<pair<string,string>>graph;
+      vector<string>transactions; 
+      vector<char>operations,values;
+      int numSteps=input[0].size();
+      int numTransactions=input.size();
+      for(int j=1;j<numSteps;++j) 
+      {
+            for(int i=0;i<numTransactions;++i) 
+            {
+                  if(input[i][j]!="-" and input[i][j]!="COM") 
+                  {
+                        string transaction=input[i][0];
+                        char operation=input[i][j][0];
+                        char value=input[i][j][2];
+                        for(int idx=0;idx<transactions.size();++idx) 
+                        {
+                              if(values[idx]==value and transaction!=transactions[idx]) 
                               {
                                     if(operations[idx]!=operation or operation=='W') 
                                     {
@@ -44,9 +51,9 @@ bool cycleCheck(const vector<pair<string,string>>& graph)
       unordered_set<string>visited,recStack;
       function<bool(const string&)>dfs=[&](const string& node) 
       {
-            if (recStack.count(node)) 
+            if(recStack.count(node)) 
                   return true;
-            if (visited.count(node)) 
+            if(visited.count(node)) 
                   return false;
             recStack.insert(node);
             visited.insert(node);
@@ -59,46 +66,6 @@ bool cycleCheck(const vector<pair<string,string>>& graph)
              return false;
       };
 
-<<<<<<< HEAD
-
-          for (const auto& edge : graph) 
-          {
-                    adjList[edge.first].push_back(edge.second);
-          }
-
-          unordered_set<string> visited, recStack;
-
-   
-          function<bool(const string&)> dfs = [&](const string& node) 
-          {
-                    if (recStack.count(node)) 
-                              return true;
-                    if (visited.count(node)) 
-                              return false;
-
-                    recStack.insert(node);
-                    visited.insert(node);
-
-                    for (const string& neighbor : adjList[node]) 
-                    {
-                              if (dfs(neighbor)) return true;
-                    }
-
-                    recStack.erase(node);
-                    return false;
-          };
-
-          for (const auto& pair : adjList) 
-          {
-                    const string& node = pair.first;
-                    if (!visited.count(node)) 
-                    {
-                              if (dfs(node)) return true;
-                    }
-          }
-
-          return false;
-=======
       for(const auto& pair:adjList) 
       {
             const string& node=pair.first;
@@ -110,13 +77,13 @@ bool cycleCheck(const vector<pair<string,string>>& graph)
       }
 
       return false;
->>>>>>> 5cab8de2984f0e283747af343256f8fe0fcc41b6
 }
 
 int main() 
 {         
       vector<vector<string>>input;
-      freopen("input.csv","r",stdin);
+      if(freopen("input2.csv","r",stdin)==0)
+            cout<<"No file\n";
       string line;
       while(getline(cin,line)) 
       {
@@ -126,7 +93,8 @@ int main()
             int end=line.find(',',0);
             while(end!=string::npos) 
             {
-                  row.push_back(line.substr(start,end-start));
+                  value=line.substr(start,end-start);
+                  row.push_back(value);
                   start=end+1;
                   end=line.find(',',start);
             }
