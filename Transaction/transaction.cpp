@@ -49,7 +49,7 @@ bool cycleCheck(const vector<pair<string,string>>& graph)
             adjList[edge.first].push_back(edge.second);
       }
       unordered_set<string>visited,recStack;
-      function<bool(const string&)>dfs=[&](const string& node) 
+      function<bool(const string&)>dfs=[&](const string& node) //[&] 
       {
             if(recStack.count(node)) 
                   return true;
@@ -63,7 +63,7 @@ bool cycleCheck(const vector<pair<string,string>>& graph)
                         return true;
             }
             recStack.erase(node);
-             return false;
+            return false;
       };
 
       for(const auto& pair:adjList) 
