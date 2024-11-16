@@ -1,4 +1,3 @@
-
 INSERT INTO Areas (continent,country,city,saleAmount) VALUES('Asia','India','Banglore','1000');
 INSERT INTO Areas (continent,country,city,saleAmount) VALUES('Asia','India','Chennai','2000');
 INSERT INTO Areas (continent,country,city,saleAmount) VALUES('Asia','Japan','Tokyo','4000');

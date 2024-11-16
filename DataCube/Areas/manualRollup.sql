@@ -12,5 +12,3 @@ GROUP BY continent
 UNION ALL
 SELECT NULL,NULL,NULL,SUM(saleAmount) AS totalsale
 FROM Areas;
-
-    
