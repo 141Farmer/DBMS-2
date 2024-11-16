@@ -1,4 +1,3 @@
-SELECT continent, country, city, 
-       SUM(CAST(saleAmount AS DECIMAL)) AS totalsale
+SELECT continent,country,city,SUM(saleAmount) AS totalsale
 FROM Areas
-GROUP BY CUBE(continent, country, city);
+GROUP BY CUBE(continent,country,city);

@@ -1,16 +1,16 @@
-SELECT continent, country, city, SUM(CAST(saleAmount AS DECIMAL)) AS totalsale
+SELECT continent,country,city,SUM(saleAmount) AS totalsale
 FROM Areas
-GROUP BY continent, country, city    
+GROUP BY continent,country,city    
 UNION ALL
-SELECT continent, country, NULL AS city, SUM(CAST(saleAmount AS DECIMAL)) AS totalsale
+SELECT continent,country,NULL,SUM(saleAmount) AS totalsale
 FROM Areas
-GROUP BY continent, country
+GROUP BY continent,country
 UNION ALL
-SELECT continent, NULL AS country, NULL AS city, SUM(CAST(saleAmount AS DECIMAL)) AS totalsale
+SELECT continent,NULL,NULL,SUM(saleAmount) AS totalsale
 FROM Areas
 GROUP BY continent
 UNION ALL
-SELECT NULL As continent, NULL AS country, NULL AS city, SUM(CAST(saleAmount AS DECIMAL)) AS totalsale
+SELECT NULL,NULL,NULL,SUM(saleAmount) AS totalsale
 FROM Areas;
 
     

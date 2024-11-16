@@ -1,6 +1,8 @@
-CREATE TABLE Areas (
-    continent VARCHAR(30),
-    country VARCHAR(30),
-    city VARCHAR(30),
-    saleAmount VARCHAR(30)
+DROP TABLE AREAS;
+
+CREATE TABLE Areas(
+    continent VARCHAR(15),
+    country VARCHAR(15),
+    city VARCHAR(15),
+    saleAmount VARCHAR(15)
 );
