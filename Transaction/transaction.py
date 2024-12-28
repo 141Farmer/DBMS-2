@@ -75,9 +75,9 @@ def main():
                     print(graph[i][0],'->',graph[i][1])
 
           if cycleCheck(graph) is True:
-                    print('Conflict')
+                    print('Conflict unserializable')
           else:
-                    print('Parallel')
+                    print('Conflict serializable')
           
 if __name__=='__main__':
           main()
