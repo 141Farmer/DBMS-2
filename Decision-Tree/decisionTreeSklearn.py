@@ -1,10 +1,12 @@
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-from pandas import read_csv
+from pandas import DataFrame
 
-df=read_csv('iris/iris.data')
-df.columns=['sepal_length','sepal_width','petal_length','petal_width','class']
+data=load_iris()
+df=DataFrame(data.data,columns=['sepal_length','sepal_width','petal_length','petal_width'])
+df['class']=data.target
 
 X=df[['sepal_length','sepal_width','petal_length','petal_width']].values
 y=df['class'].values
