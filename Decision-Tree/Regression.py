@@ -1,6 +1,5 @@
 from pandas import read_csv
 
-
 def trainTestSplit(X,y,testSize=0.3):
         trainSize=int(1-testSize*len(X))
         X_train=X[:trainSize]
@@ -8,13 +7,14 @@ def trainTestSplit(X,y,testSize=0.3):
         X_test=X[trainSize:]
         y_test=y[trainSize:]
         return X_train,X_test,y_train,y_test
-
-          
-def fit_equation(X, y, class_name):
+      
+def fit_equation(X,y,class_name):
         binary_y=[(1.0 if label==class_name else 0.0) for label in y]
         X_class=[X[i] for i in range(len(X)) if binary_y[i]==1.0]
         y_class=[binary_y[i] for i in range(len(binary_y)) if binary_y[i]==1.0]
     
+        print(X_class)
+        print(y_class)
         mean_X=[sum(feature)/len(feature) for feature in zip(*X_class)]
         mean_y=sum(y_class)/len(y_class)
     
