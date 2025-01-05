@@ -56,6 +56,7 @@ def main():
           X_fold,y_fold=kFoldCrossValidation(X,y,n_splits)
 
           totalAccuracy=0
+........  totalPrecision=0
           totalF1=0
           totalF2=0
           totalDistance=0
@@ -80,12 +81,12 @@ def main():
                     #predictions=predictByInformationGain(X_train,y_train,X_test)
                     predictions=predictByLinearRegression(X_train,y_train,X_test,classes,df.columns)
                     print(f'\n{i+1}th split')
-                    accuracy,distance,f1,f2=fScores(predictions,y_test)
-                    totalAccuracy+=accuracy
+                    precision,distance,f1,f2=fScores(predictions,y_test)
+                    totalPrecision+=precision
                     totalDistance+=distance
                     totalF1+=f1
                     totalF2+=f2
-          print(f"\nMean Accuracy: {totalAccuracy/n_splits:.3f}")
+          print(f"\nMean Precesion: {totalPrecision/n_splits:.3f}")
           print(f"\nMean distance to heaven score: {totalDistance/n_splits:.3f}")
           print(f"\nMean F1 score: {totalF1/n_splits:.3f}")
           print(f"\nMean F2 score: {totalF2/n_splits:.3f}")
